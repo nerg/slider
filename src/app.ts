@@ -4,7 +4,7 @@ import { Slider } from './slider.ts';
 @Component({
   selector: 'app',
   template:  `<slider></slider>`, 
-  directives: [FORM_DIRECTIVES, Slider]
+  directives: [ Slider ]
 })
 
 export class App {};

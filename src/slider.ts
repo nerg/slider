@@ -20,7 +20,7 @@ export class Slider implements OnInit {
         this.elementRef = elementRef;
     }
 
-    ngAfterContentChecked() {        
+    ngOnInit() {        
         jQuery(this.elementRef.nativeElement).find("#slider").slider({
           range: false,
           orientation: "vertical",
@@ -28,7 +28,8 @@ export class Slider implements OnInit {
           max: 100,
           value: 60,
           slide: function( event, ui ) {
-            $( "#amount" ).val( ui.value );
+            this.slideValue = ui.value; //doesn't seem to work
+            $( "#amount" ).val( ui.value ); 
           }
         });
         

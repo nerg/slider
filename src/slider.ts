@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, OnInit} from 'angular2/core';
+import {Component, ElementRef, Inject, AfterViewInit, ChangeDetectorRef} from 'angular2/core';
 
 declare var jQuery:any;
 
@@ -6,32 +6,31 @@ declare var jQuery:any;
     selector: 'slider',
     template: 
     `
-    <input type="text" [(ngModel)]="slideValue" id="amount" required placeholder="Enter a name here">
+    <input #sldValue [(ngModel)]="slideValue">
     <div id="slider"></div>
     <h2>slideValue = {{slideValue}}</h2>
     `
 })
 
-export class Slider implements OnInit {
+export class Slider implements AfterViewInit {
+    
     elementRef: ElementRef;
-    slideValue: number;
+    slideValue: number = 0;
 
-    constructor(@Inject(ElementRef) elementRef: ElementRef) {
-        this.elementRef = elementRef;
+    constructor(@Inject(ElementRef) elementRef: ElementRef, public cdr: ChangeDetectorRef) {
+      this.elementRef = elementRef;
     }
 
-    ngOnInit() {        
-        jQuery(this.elementRef.nativeElement).find("#slider").slider({
-          range: false,
-          orientation: "vertical",
-          min: 0,
-          max: 100,
-          value: 60,
-          slide: function( event, ui ) {
-            this.slideValue = ui.value; //doesn't seem to work
-            $( "#amount" ).val( ui.value ); 
-          }
-        });
-        
+    ngAfterViewInit() { 
+      jQuery(this.elementRef.nativeElement).find("#slider").slider({
+        range: false,
+        orientation: "vertical",
+        min: 0,
+        max: 100,
+        value: this.slideValue,
+        slide: ( event, ui ) => {
+          this.slideValue = ui.value;
+        }
+      });
     }
 }

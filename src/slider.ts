@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, AfterViewInit, ChangeDetectorRef} from 'angular2/core';
+import {Component, ElementRef, Inject, AfterViewInit} from 'angular2/core';
 
 declare var jQuery:any;
 
@@ -6,7 +6,7 @@ declare var jQuery:any;
     selector: 'slider',
     template: 
     `
-    <input #sldValue [(ngModel)]="slideValue">
+    <input [(ngModel)]="slideValue" (keyup)="updSlider()">
     <div id="slider"></div>
     <h2>slideValue = {{slideValue}}</h2>
     `
@@ -15,10 +15,15 @@ declare var jQuery:any;
 export class Slider implements AfterViewInit {
     
     elementRef: ElementRef;
-    slideValue: number = 0;
+    slideValue: number;
 
-    constructor(@Inject(ElementRef) elementRef: ElementRef, public cdr: ChangeDetectorRef) {
+    constructor(@Inject(ElementRef) elementRef: ElementRef) {
       this.elementRef = elementRef;
+    }
+
+    updSlider() {
+      jQuery(this.elementRef.nativeElement).find("#slider")
+      .slider("option", "value", this.slideValue);
     }
 
     ngAfterViewInit() { 

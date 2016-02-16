@@ -4,6 +4,8 @@
     <title>Angular 2 QuickStart</title>
     <!-- 1. Load libraries -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://rawgithub.com/systemjs/systemjs/0.19.6/dist/system.js"></script>
@@ -28,9 +30,37 @@
         });
       });
     </script>
+  <style>
+  .slider {
+    height:120px;
+  }
+  .inputSlider {
+    height:17px; 
+    width: 22px; 
+    font-size:13px;
+    margin-right:0px; 
+    margin-left:-5px; 
+    margin-top:0px; 
+    margin-bottom:10px; 
+    border:0; 
+    text-align: center;
+    color:#f6931f;
+    background-color:#fff;
+  }
+  .sliderElement {
+    float:left;
+    margin:2px;
+  }
+  button {
+    clear: left; 
+    display: block;
+  }
+  </style>
   </head>
   <!-- 4. Display the application -->
   <body>
-    <app>Loading...</app>
+    <div id="container">
+      <app>Loading...</app>
+    </div>
   </body>
 </html>

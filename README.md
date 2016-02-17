@@ -4,9 +4,9 @@ This is a test to add a slider from jquery-ui to an Angular2 component.
 
 To use it: 
 
-git clone
-npm install
-npm start
+git clone  
+npm install  
+npm start  
 
 Plunker available here:
 
